@@ -61,7 +61,7 @@ app.put("/updatedetail", (req,res)=>{
                     return res.send("Something went wrong");
                 }
                 else{
-                    res.send("Information is successfully added");
+                    res.send("Information is successfully updated");
                 }
             })
         }
@@ -148,8 +148,7 @@ app.post("/register", (req,res) =>{
                     }
                 })
             }
-            
-
+         
         }
 
         else{
@@ -181,7 +180,6 @@ app.post("/register", (req,res) =>{
 
 // It is used to login the user
 app.post("/login" ,(req,res)=>{
-    // console.log(req.body)
     fs.readFile("data.json", "utf8", (error, data) =>{
         if(error){
             res.send("Something went wrong");
@@ -194,10 +192,8 @@ app.post("/login" ,(req,res)=>{
                     
                     
                     let token = jwt.sign( {Email:req.body.Email} , "thisismystrongsecretkey", { expiresIn:"10h"})
-                    console.log(token)
-                    return res.send({Status: "Logged in", Token:token}); 
-                }
-                   
+                    return res.send({Status: " User Logged in Successfully", Token:token}); 
+                }   
             }
             return res.send("Invalid Credentials"); 
         }     
